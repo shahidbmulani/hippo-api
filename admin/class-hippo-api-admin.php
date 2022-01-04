@@ -100,4 +100,50 @@ class Hippo_Api_Admin {
 
 	}
 
+	public function plugin_top_menu(){
+		$page_title = 'Hippo API';
+		$menu_title = 'Hippo API';
+		$capability = 'manage_options';
+		$menu_slug = 'hippo-api-dashboard';
+		add_menu_page( $page_title, $menu_title, $capability, $menu_slug, [$this, 'main_menu_callback'] );
+	}
+
+	public function main_menu_callback(){
+		require plugin_dir_path( __FILE__ ) . 'partials/hippo-api-admin-display.php';
+	}
+
+	public function register_setting(){
+		// general setting section
+		add_settings_section(
+			'ha_general',
+			__('Configuration', 'hippo-api'),
+			array($this, 'ha_general_cb'),
+			'ha_general_settings'
+		);
+
+		add_settings_field(
+			'ha_auth_token',
+			__('Shipping zones to each location', 'wcmlim'),
+			array($this, 'ha_auth_token_callback'),
+			'ha_general_set',
+			'ha_general_sett',
+			array('label_for' => 'ha_auth_token')
+		);
+
+		register_setting('ha_general_settings', 'ha_general_setting');
+
+	}
+
+	public function ha_general_cb(){
+		echo '<p>' . __('Please enter the details.', 'hippo-api') . '</p>';
+	}
+
+	public function ha_auth_token_callback(){
+		$authToken = get_option('haauthtoken'); 
+	?>                    
+		<label for="haauthtoken">Auth Token</label>
+		<input type="text" name="haauthtoken" id="haauthtoken" value="<?php esc_attr_e($authToken); ?>">
+	<?php
+	}
+
 }

@@ -2,3 +2,79 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+ .admin-menu-setting  .tabset > input[type="radio"] {
+    position: absolute;
+    left: -200vw;
+  }
+  
+  .admin-menu-setting  .tabset .tab-panel {
+    display: none;
+  }
+  
+  .admin-menu-setting 
+    .tabset
+    > input:first-child:checked
+    ~ .tab-panels
+    > .tab-panel:first-child {
+    display: block;
+    padding: 1rem;
+  }
+  
+  .admin-menu-setting  .tabset > label {
+    font-size: 15px;
+    position: relative;
+    display: inline-block;
+    padding: 15px 15px 15px;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+
+ .admin-menu-setting  .tabset > label::after {
+    content: "";
+    position: absolute;
+    left: 30%;
+    bottom: 10px;
+    width: 0px;
+    height: 4px;
+    background: #8d8d8d;
+  }
+  
+  .admin-menu-setting  .tabset > label:hover,
+  .tabset > input:focus + label {
+    color: #06c;
+  }
+  
+  .admin-menu-setting  .tabset > label:hover::after,
+  .tabset > input:focus + label::after,
+  .tabset > input:checked + label::after {
+    background: #06c;
+  }
+  
+  .admin-menu-setting  .tabset > input:checked + label {
+    border-color: #ccc;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -1px;
+    background: white;
+  }
+  
+  .admin-menu-setting  .tab-panel {
+    padding: 30px 0;
+    border-top: 1px solid #ccc;
+  }
+  
+  .admin-menu-setting  .tabset {
+    max-width: 100%;
+  }
+  .admin-menu-setting  .tab-panels {
+    background: white;
+    border: 1px solid #ccc;
+  }
+  .admin-menu-setting  {
+    background: #ffffff87;
+    margin-top: 2rem;
+  }
+  
